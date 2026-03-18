@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, render_template_string
 import requests
 
+
 app = Flask(__name__)
 
 API_KEY = "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"
@@ -205,4 +206,8 @@ def ask():
         return jsonify({"error": str(e)})
 
 
-app.run(host="0.0.0.0", port=5000)
+import os
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
